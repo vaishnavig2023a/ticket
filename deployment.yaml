@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: seat-booking
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: seat-booking
+  template:
+    metadata:
+      labels:
+        app: seat-booking
+    spec:
+      containers:
+      - name: seat-booking
+        image: seat-booking:latest
+        ports:
+        - containerPort: 8080

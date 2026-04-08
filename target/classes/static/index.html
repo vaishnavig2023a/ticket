@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Seat Booking</title>
+</head>
+<body>
+
+<h2>Seat Booking System</h2>
+
+<label>Enter Seat Number (1-10):</label>
+<input type="number" id="seatNumber" min="1" max="10">
+<button onclick="bookSeat()">Book Seat</button>
+
+<p id="message"></p>
+
+<script>
+    let bookedSeats = [];
+
+    function bookSeat() {
+        let seat = document.getElementById("seatNumber").value;
+        let msg = document.getElementById("message");
+
+        if (seat === "") {
+            msg.innerHTML = "Please enter a seat number!";
+            return;
+        }
+
+        seat = parseInt(seat);
+
+        if (seat < 1 || seat > 10) {
+            msg.innerHTML = "Seat must be between 1 and 10!";
+            return;
+        }
+
+        if (bookedSeats.includes(seat)) {
+            msg.innerHTML = "Seat already booked!";
+            return;
+        }
+
+        bookedSeats.push(seat);
+        msg.innerHTML = "Seat " + seat + " booked successfully!";
+    }
+</script>
+
+</body>
+</html>
